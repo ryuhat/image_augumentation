@@ -1,6 +1,13 @@
 import imgaug.augmenters as iaa
 import os
 from PIL import Image
+import argparse
+
+# Define argument parser
+parser = argparse.ArgumentParser()
+parser.add_argument("--image", required=True, help="Path to the image folder")
+parser.add_argument("--label", required=True, help="Path to the label folder")
+args = parser.parse_args()
 
 # Define augmentation sequence
 aug = iaa.Sequential([
@@ -12,8 +19,8 @@ aug = iaa.Sequential([
 ])
 
 # Define path to images and labels
-img_folder = "images"
-label_folder = "labels"
+img_folder = args.image
+label_folder = args.label
 
 # Loop through images in folder and apply augmentation
 for filename in os.listdir(img_folder):
