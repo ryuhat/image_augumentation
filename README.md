@@ -7,6 +7,6 @@ python img_aug.py --path images
 ```
 
 ```
-python img_aug.py --image images --label labels
+python yolo_aug.py --image images --label labels
 
 ```
