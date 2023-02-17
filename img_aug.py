@@ -1,6 +1,11 @@
 import imgaug.augmenters as iaa
 import os
 from PIL import Image
+import argparse
+
+# Define argument parser
+parser = argparse.ArgumentParser(description='Apply image augmentation to images in a folder.')
+parser.add_argument('--path', type=str, help='path to images folder', required=True)
 
 # Define augmentation sequence
 aug = iaa.Sequential([
@@ -11,8 +16,9 @@ aug = iaa.Sequential([
     iaa.AdditiveGaussianNoise(scale=(0, 0.05*255)), # noise addition
 ])
 
-# Folder containing images
-folder_path = "path/to/folder"
+# Parse arguments
+args = parser.parse_args()
+folder_path = args.path
 
 # Loop through images in folder and apply augmentation
 for filename in os.listdir(folder_path):
